@@ -179,7 +179,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-11-03 05:27:21 / 修改时间：20:38:35" itemprop="dateCreated datePublished" datetime="2021-11-03T05:27:21+08:00">2021-11-03</time>
+      <time title="创建时间：2021-11-03 05:27:21 / 修改时间：21:45:55" itemprop="dateCreated datePublished" datetime="2021-11-03T05:27:21+08:00">2021-11-03</time>
     </span>
 
   
@@ -192,7 +192,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>由于zsh默认不会读取/etc/profile文件，所以会失效<br><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/537637/sshing-into-system-with-zsh-as-default-shell-doesnt-run-etc-profile">详情点我</a></p>
+          <p>由于zsh默认不会读取/etc/profile文件，所以会失效</p>
+<p>参考<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/537637/sshing-into-system-with-zsh-as-default-shell-doesnt-run-etc-profil">介绍</a></p>
+<p>使用sudo命令提权后又无效，因为sudo会重置环境变量设置安全路径，添加即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Defaults        env_reset</span><br><span class="line">Defaults        mail_badpass</span><br><span class="line">Defaults        secure_path=&quot;/usr/local/nodejs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin&quot;</span><br></pre></td></tr></table></figure>
 
       
     </div>
