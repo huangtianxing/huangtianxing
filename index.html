@@ -185,7 +185,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-10 12:18:29" itemprop="dateModified" datetime="2021-11-10T12:18:29+08:00">2021-11-10</time>
+        <time title="修改时间：2021-11-10 12:46:54" itemprop="dateModified" datetime="2021-11-10T12:46:54+08:00">2021-11-10</time>
       </span>
 
   
@@ -201,54 +201,14 @@
           <h1 id="1-Ubuntu安装zsh后-etc-profile内变量失效"><a href="#1-Ubuntu安装zsh后-etc-profile内变量失效" class="headerlink" title="1.Ubuntu安装zsh后/etc/profile内变量失效"></a>1.Ubuntu安装zsh后/etc/profile内变量失效</h1><p>由于zsh默认不会读取/etc/profile文件，所以会失效</p>
 <p>参考<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/537637/sshing-into-system-with-zsh-as-default-shell-doesnt-run-etc-profil">介绍</a></p>
 <p>使用sudo命令提权后又无效，因为sudo会重置环境变量设置安全路径，使用sudo visudo命令在/etc/sudoer中添加即可</p>
-<blockquote>
-<p>Defaults        env_reset<br>Defaults        mail_badpass<br>Defaults   secure_path=”/usr/local/nodejs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin”</p>
-</blockquote>
-<h1 id="2-更改LFS的wget-list中软件网址"><a href="#2-更改LFS的wget-list中软件网址" class="headerlink" title="2.更改LFS的wget-list中软件网址"></a>2.更改LFS的wget-list中软件网址</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat wget-list | awk <span class="string">&#x27;&#123;FS=&quot;/&quot;&#125;&#123;print &quot;https://mirrors.ustc.edu.cn/lfs/lfs-packages/11.0-rc3/&quot;$NF&#125;&#x27;</span> &gt; wget-list1</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-进入docker内部执行命令"><a href="#3-进入docker内部执行命令" class="headerlink" title="3.进入docker内部执行命令"></a>3.进入docker内部执行命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it docker-id /bin/bish <span class="comment">#进入容器</span></span><br><span class="line"><span class="built_in">exit</span>                                <span class="comment">#退出容器</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="4-tmux常用快捷键"><a href="#4-tmux常用快捷键" class="headerlink" title="4.tmux常用快捷键"></a>4.tmux常用快捷键</h1><h4 id="4-1-会话管理"><a href="#4-1-会话管理" class="headerlink" title="4.1 会话管理"></a>4.1 会话管理</h4><ul>
-<li><p><code>tmux new  -s session-name</code> 新建窗口</p>
-</li>
-<li><p><code>exit 或ctrl+d</code> 退出窗口</p>
-</li>
-<li><p><code>Ctrl+b d</code>：分离当前会话。</p>
-</li>
-<li><p><code>Ctrl+b s</code>：列出所有会话。</p>
-</li>
-<li><p><code>Ctrl+b $</code>：重命名当前会话。</p>
-</li>
-<li><p><code>tmux ls</code> 列出所有会话</p>
-</li>
-<li><p><code>tmux attach -t session-name</code> 重新进入已存在的会话</p>
-</li>
-</ul>
-<h4 id="4-2-窗格管理"><a href="#4-2-窗格管理" class="headerlink" title="4.2 窗格管理"></a>4.2 窗格管理</h4><ul>
-<li><code>Ctrl+b %</code>：划分左右两个窗格。</li>
-<li><code>Ctrl+b &quot;</code>：划分上下两个窗格。</li>
-<li><code>Ctrl+b &lt;arrow key&gt;</code>：光标切换到其他窗格。<code>&lt;arrow key&gt;</code>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键<code>↓</code>。</li>
-<li><code>Ctrl+b ;</code>：光标切换到上一个窗格。</li>
-<li><code>Ctrl+b o</code>：光标切换到下一个窗格。</li>
-<li><code>Ctrl+b &#123;</code>：当前窗格与上一个窗格交换位置。</li>
-<li><code>Ctrl+b &#125;</code>：当前窗格与下一个窗格交换位置。</li>
-<li><code>Ctrl+b Ctrl+o</code>：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</li>
-<li><code>Ctrl+b Alt+o</code>：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</li>
-<li><code>Ctrl+b x</code>：关闭当前窗格。</li>
-<li><code>Ctrl+b !</code>：将当前窗格拆分为一个独立窗口。</li>
-<li><code>Ctrl+b z</code>：当前窗格全屏显示，再使用一次会变回原来大小。</li>
-<li><code>Ctrl+b Ctrl+&lt;arrow key&gt;</code>：按箭头方向调整窗格大小。</li>
-<li><code>Ctrl+b q</code>：显示窗格编号。</li>
-</ul>
-<h4 id="4-3-窗口管理"><a href="#4-3-窗口管理" class="headerlink" title="4.3 窗口管理"></a>4.3 窗口管理</h4><ul>
-<li><code>Ctrl+b c</code>：创建一个新窗口，状态栏会显示多个窗口的信息。</li>
-<li><code>Ctrl+b p</code>：切换到上一个窗口（按照状态栏上的顺序）。</li>
-<li><code>Ctrl+b n</code>：切换到下一个窗口。</li>
-<li><code>Ctrl+b &lt;number&gt;</code>：切换到指定编号的窗口，其中的<code>&lt;number&gt;</code>是状态栏上的窗口编号。</li>
-<li><code>Ctrl+b w</code>：从列表中选择窗口。</li>
-<li><code>Ctrl+b ,</code>：窗口重命名。</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/02/Linux%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
